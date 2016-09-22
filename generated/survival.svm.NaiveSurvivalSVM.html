@@ -107,7 +107,7 @@ vectors in the original data, thus this version requires <cite>O(n_samples^2)</c
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, positive, default=1.0</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, positive (default=1.0)</p>
 <blockquote>
 <div><p>Weight of penalizing the squared hinge loss in the objective function (default: 1)</p>
 </div></blockquote>
@@ -132,7 +132,7 @@ optimization problem. Prefer dual=False when n_samples &gt; n_features.</p>
 <blockquote>
 <div><p>Tolerance for stopping criteria.</p>
 </div></blockquote>
-<p><strong>verbose</strong> : int, (default=0)</p>
+<p><strong>verbose</strong> : int (default=0)</p>
 <blockquote>
 <div><p>Enable verbose output. Note that this setting takes advantage of a
 per-process runtime setting in liblinear that, if enabled, may not work
@@ -143,7 +143,7 @@ properly in a multithreaded context.</p>
 <div><p>The seed of the pseudo random number generator to use when
 shuffling the data.</p>
 </div></blockquote>
-<p><strong>max_iter</strong> : int, (default=1000)</p>
+<p><strong>max_iter</strong> : int (default=1000)</p>
 <blockquote class="last">
 <div><p>The maximum number of iterations to be run.</p>
 </div></blockquote>

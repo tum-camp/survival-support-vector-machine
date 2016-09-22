@@ -29,7 +29,7 @@
     <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
     <link rel="up" title="API reference" href="../api.html" />
     <link rel="next" title="survival.svm.MinlipSurvivalAnalysis" href="survival.svm.MinlipSurvivalAnalysis.html" />
-    <link rel="prev" title="survival.svm.FastSurvivalSVM" href="survival.svm.FastKernelSurvivalSVM.html" />
+    <link rel="prev" title="survival.svm.FastKernelSurvivalSVM" href="survival.svm.FastKernelSurvivalSVM.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
@@ -46,7 +46,7 @@
           <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastKernelSurvivalSVM"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
@@ -56,7 +56,7 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="survival.svm.FastKernelSurvivalSVM.html"
-                        title="previous chapter">survival.svm.FastSurvivalSVM</a></p>
+                        title="previous chapter">survival.svm.FastKernelSurvivalSVM</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="survival.svm.MinlipSurvivalAnalysis.html"
                         title="next chapter">survival.svm.MinlipSurvivalAnalysis</a></p>
@@ -128,8 +128,13 @@ of kernel Survival Support Vector Machine.</p>
 <blockquote>
 <div><p>Mixing parameter between regression and ranking objective with <code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">rank_ratio</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>.
 If <code class="docutils literal"><span class="pre">rank_ratio</span> <span class="pre">=</span> <span class="pre">1</span></code>, only ranking is performed, if <code class="docutils literal"><span class="pre">rank_ratio</span> <span class="pre">=</span> <span class="pre">0</span></code>, only regression
-is performed. A non-zero value is only allowed if optimizer is one of &#8216;avltree&#8217;, &#8216;PRSVM&#8217;,
-or &#8216;rbtree&#8217;.</p>
+is performed. A non-zero value is only allowed if optimizer is one of &#8216;avltree&#8217;, &#8216;rbtree&#8217;,
+or &#8216;direct-count&#8217;.</p>
+</div></blockquote>
+<p><strong>fit_intercept</strong> : boolean, optional (default=False)</p>
+<blockquote>
+<div><p>Whether to calculate an intercept for the regression model. If set to <code class="docutils literal"><span class="pre">False</span></code>, no intercept
+will be calculated. Has no effect if <code class="docutils literal"><span class="pre">rank_ratio</span> <span class="pre">=</span> <span class="pre">1</span></code>, i.e., only ranking is performed.</p>
 </div></blockquote>
 <p><strong>max_iter</strong> : int, optional (default: 20)</p>
 <blockquote>
@@ -212,7 +217,10 @@ Lecture Notes in Computer Science, vol. 9285, pp. 243-259 (2015)</td></tr>
 <tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.predict" title="survival.svm.FastSurvivalSVM.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
 <td>Rank samples according to survival times</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.set_params" title="survival.svm.FastSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">score</span></code>(X,&nbsp;y)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.set_params" title="survival.svm.FastSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>
@@ -332,7 +340,7 @@ component of a nested object.</p>
           <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
              >next</a> |</li>
         <li class="right" >
-          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastKernelSurvivalSVM"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 

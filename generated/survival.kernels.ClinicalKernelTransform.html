@@ -132,8 +132,8 @@ Annual International Conference of the IEEE Engineering in Medicine and Biology 
 <tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.__init__" title="survival.kernels.ClinicalKernelTransform.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([fit_once,&nbsp;_numeric_ranges,&nbsp;...])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code>(X[,&nbsp;y])</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.fit" title="survival.kernels.ClinicalKernelTransform.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X[,&nbsp;y])</td>
+<td>Determine transformation parameters from data in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.fit_transform" title="survival.kernels.ClinicalKernelTransform.fit_transform"><code class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></code></a>(X[,&nbsp;y])</td>
 <td>Fit to data, then transform it.</td>
@@ -144,8 +144,8 @@ Annual International Conference of the IEEE Engineering in Medicine and Biology 
 <tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.pairwise_kernel" title="survival.kernels.ClinicalKernelTransform.pairwise_kernel"><code class="xref py py-obj docutils literal"><span class="pre">pairwise_kernel</span></code></a>(X,&nbsp;Y)</td>
 <td>Function to use with <code class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.pairwise.pairwise_kernels()</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">prepare</span></code>(X)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.prepare" title="survival.kernels.ClinicalKernelTransform.prepare"><code class="xref py py-obj docutils literal"><span class="pre">prepare</span></code></a>(X)</td>
+<td>Determine transformation parameters from data in X.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.set_params" title="survival.kernels.ClinicalKernelTransform.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
@@ -155,6 +155,35 @@ Annual International Conference of the IEEE Engineering in Medicine and Biology 
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine transformation parameters from data in X.</p>
+<p>Subsequent calls to <cite>transform(Y)</cite> compute the pairwise
+distance to <cite>X</cite>.
+Parameters of the clinical kernel are only updated
+if <cite>fit_once</cite> is <cite>False</cite>, otherwise you have to
+explicitly call <cite>prepare()</cite> once.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X: pandas.DataFrame, shape = [n_samples, n_features]</strong></p>
+<blockquote>
+<div><p>Data to estimate parameters from.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<div><p>Returns the instance itself.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="survival.kernels.ClinicalKernelTransform.fit_transform">
 <code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.fit_transform" title="Permalink to this definition">¶</a></dt>
@@ -225,6 +254,26 @@ contained subobjects that are estimators.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>similarity</strong> : float</p>
 <blockquote class="last">
 <div><p>Similarities are normalized to be within [0, 1]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine transformation parameters from data in X.</p>
+<p>Use if <cite>fit_once</cite> is <cite>True</cite>, in which case <cite>fit()</cite> does
+not set the parameters of the clinical kernel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X: pandas.DataFrame, shape = [n_samples, n_features]</strong></p>
+<blockquote class="last">
+<div><p>Data to estimate parameters from.</p>
 </div></blockquote>
 </td>
 </tr>

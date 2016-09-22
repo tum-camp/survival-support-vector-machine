@@ -1,5 +1,5 @@
-survival.svm.FastSurvivalSVM
-============================
+survival.svm.FastKernelSurvivalSVM
+==================================
 
 .. currentmodule:: survival.svm
 
@@ -13,11 +13,12 @@ survival.svm.FastSurvivalSVM
 
    .. autosummary::
    
-      ~FastSurvivalSVM.__init__
-      ~FastSurvivalSVM.fit
-      ~FastSurvivalSVM.get_params
-      ~FastSurvivalSVM.predict
-      ~FastSurvivalSVM.set_params
+      ~FastKernelSurvivalSVM.__init__
+      ~FastKernelSurvivalSVM.fit
+      ~FastKernelSurvivalSVM.get_params
+      ~FastKernelSurvivalSVM.predict
+      ~FastKernelSurvivalSVM.score
+      ~FastKernelSurvivalSVM.set_params
    
    
 

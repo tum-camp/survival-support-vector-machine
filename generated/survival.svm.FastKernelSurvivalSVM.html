@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>survival.svm.FastSurvivalSVM &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    <title>survival.svm.FastKernelSurvivalSVM &#8212; Survival Support Vector Machine 2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -85,8 +85,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="survival-svm-fastsurvivalsvm">
-<h1>survival.svm.FastSurvivalSVM<a class="headerlink" href="#survival-svm-fastsurvivalsvm" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="survival-svm-fastkernelsurvivalsvm">
+<h1>survival.svm.FastKernelSurvivalSVM<a class="headerlink" href="#survival-svm-fastkernelsurvivalsvm" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="survival.svm.FastKernelSurvivalSVM">
 <em class="property">class </em><code class="descclassname">survival.svm.</code><code class="descname">FastKernelSurvivalSVM</code><span class="sig-paren">(</span><em>alpha=1</em>, <em>rank_ratio=1.0</em>, <em>fit_intercept=False</em>, <em>kernel='rbf'</em>, <em>gamma=None</em>, <em>degree=3</em>, <em>coef0=1</em>, <em>kernel_params=None</em>, <em>max_iter=20</em>, <em>verbose=False</em>, <em>tol=None</em>, <em>optimizer=None</em>, <em>random_state=None</em>, <em>timeit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastKernelSurvivalSVM" title="Permalink to this definition">¶</a></dt>
@@ -205,19 +205,22 @@ The given number of repetitions are performed. Results can be accessed from the
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM.__init__" title="survival.svm.FastSurvivalSVM.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([alpha,&nbsp;rank_ratio,&nbsp;fit_intercept,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastKernelSurvivalSVM.__init__" title="survival.svm.FastKernelSurvivalSVM.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([alpha,&nbsp;rank_ratio,&nbsp;fit_intercept,&nbsp;...])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM.fit" title="survival.svm.FastSurvivalSVM.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastKernelSurvivalSVM.fit" title="survival.svm.FastKernelSurvivalSVM.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
 <td>Build a survival support vector machine model from training data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM.get_params" title="survival.svm.FastSurvivalSVM.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastKernelSurvivalSVM.get_params" title="survival.svm.FastKernelSurvivalSVM.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
 <td>Get parameters for this estimator.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM.predict" title="survival.svm.FastSurvivalSVM.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
-<td>Rank samples according to survival times</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code>(X)</td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM.set_params" title="survival.svm.FastSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">score</span></code>(X,&nbsp;y)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastKernelSurvivalSVM.set_params" title="survival.svm.FastKernelSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
 <td>Set the parameters of this estimator.</td>
 </tr>
 </tbody>

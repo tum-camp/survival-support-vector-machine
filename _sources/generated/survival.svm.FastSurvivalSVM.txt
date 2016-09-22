@@ -17,6 +17,7 @@ survival.svm.FastSurvivalSVM
       ~FastSurvivalSVM.fit
       ~FastSurvivalSVM.get_params
       ~FastSurvivalSVM.predict
+      ~FastSurvivalSVM.score
       ~FastSurvivalSVM.set_params
    
    
