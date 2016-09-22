@@ -1,0 +1,6 @@
+survival.column.categorical_to_numeric
+======================================
+
+.. currentmodule:: survival.column
+
+.. autofunction:: categorical_to_numeric

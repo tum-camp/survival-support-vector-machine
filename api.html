@@ -1,0 +1,222 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API reference &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="index.html" />
+    <link rel="next" title="survival.svm.FastSurvivalSVM" href="generated/survival.svm.FastKernelSurvivalSVM.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="generated/survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API reference</a><ul>
+<li><a class="reference internal" href="#survival-support-vector-machine">Survival Support Vector Machine</a></li>
+<li><a class="reference internal" href="#kernels">Kernels</a></li>
+<li><a class="reference internal" href="#metrics">Metrics</a></li>
+<li><a class="reference internal" href="#pre-processing">Pre-Processing</a></li>
+<li><a class="reference internal" href="#i-o-utilities">I/O Utilities</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generated/survival.svm.FastKernelSurvivalSVM.html"
+                        title="next chapter">survival.svm.FastSurvivalSVM</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="survival-support-vector-machine">
+<h2>Survival Support Vector Machine<a class="headerlink" href="#survival-support-vector-machine" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.svm.FastKernelSurvivalSVM.html#survival.svm.FastKernelSurvivalSVM" title="survival.svm.FastKernelSurvivalSVM"><code class="xref py py-obj docutils literal"><span class="pre">FastKernelSurvivalSVM</span></code></a>([alpha,&nbsp;rank_ratio,&nbsp;...])</td>
+<td>Efficient Training of kernel Survival Support Vector Machine.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/survival.svm.FastSurvivalSVM.html#survival.svm.FastSurvivalSVM" title="survival.svm.FastSurvivalSVM"><code class="xref py py-obj docutils literal"><span class="pre">FastSurvivalSVM</span></code></a>([alpha,&nbsp;rank_ratio,&nbsp;...])</td>
+<td>Efficient Training of linear Survival Support Vector Machine</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.svm.MinlipSurvivalAnalysis.html#survival.svm.MinlipSurvivalAnalysis" title="survival.svm.MinlipSurvivalAnalysis"><code class="xref py py-obj docutils literal"><span class="pre">MinlipSurvivalAnalysis</span></code></a>([solver,&nbsp;alpha,&nbsp;...])</td>
+<td>Survival model related to survival SVM, using a minimal Lipschitz smoothness strategy instead of a maximal margin strategy.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/survival.svm.HingeLossSurvivalSVM.html#survival.svm.HingeLossSurvivalSVM" title="survival.svm.HingeLossSurvivalSVM"><code class="xref py py-obj docutils literal"><span class="pre">HingeLossSurvivalSVM</span></code></a>([solver,&nbsp;alpha,&nbsp;...])</td>
+<td>Naive implementation of kernel survival support vector machine.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.svm.NaiveSurvivalSVM.html#survival.svm.NaiveSurvivalSVM" title="survival.svm.NaiveSurvivalSVM"><code class="xref py py-obj docutils literal"><span class="pre">NaiveSurvivalSVM</span></code></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;tol,&nbsp;...])</td>
+<td>Naive version of linear Survival Support Vector Machine.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kernels">
+<h2>Kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.kernels.clinical_kernel.html#survival.kernels.clinical_kernel" title="survival.kernels.clinical_kernel"><code class="xref py py-obj docutils literal"><span class="pre">clinical_kernel</span></code></a>(x[,&nbsp;y])</td>
+<td>Computes clinical kernel</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/survival.kernels.ClinicalKernelTransform.html#survival.kernels.ClinicalKernelTransform" title="survival.kernels.ClinicalKernelTransform"><code class="xref py py-obj docutils literal"><span class="pre">ClinicalKernelTransform</span></code></a>([fit_once,&nbsp;...])</td>
+<td>Transform data using a clinical Kernel</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.metrics.concordance_index_censored.html#survival.metrics.concordance_index_censored" title="survival.metrics.concordance_index_censored"><code class="xref py py-obj docutils literal"><span class="pre">concordance_index_censored</span></code></a>(event_indicator,&nbsp;...)</td>
+<td>Concordance index for right-censored data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pre-processing">
+<h2>Pre-Processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.column.categorical_to_numeric.html#survival.column.categorical_to_numeric" title="survival.column.categorical_to_numeric"><code class="xref py py-obj docutils literal"><span class="pre">categorical_to_numeric</span></code></a>(table)</td>
+<td>Encode categorical columns to numeric by converting each category to an integer value.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/survival.column.encode_categorical.html#survival.column.encode_categorical" title="survival.column.encode_categorical"><code class="xref py py-obj docutils literal"><span class="pre">encode_categorical</span></code></a>(table,&nbsp;**kwargs)</td>
+<td>Encode categorical columns with <cite>M</cite> categories into <cite>M-1</cite> columns according to the one-hot scheme.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.column.standardize.html#survival.column.standardize" title="survival.column.standardize"><code class="xref py py-obj docutils literal"><span class="pre">standardize</span></code></a>(table[,&nbsp;with_std])</td>
+<td>Perform Z-Normalization on each numeric column of the given table.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="i-o-utilities">
+<h2>I/O Utilities<a class="headerlink" href="#i-o-utilities" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/survival.io.loadarff.html#survival.io.loadarff" title="survival.io.loadarff"><code class="xref py py-obj docutils literal"><span class="pre">loadarff</span></code></a>(filename)</td>
+<td>Load ARFF file</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/survival.io.writearff.html#survival.io.writearff" title="survival.io.writearff"><code class="xref py py-obj docutils literal"><span class="pre">writearff</span></code></a>(data,&nbsp;filename[,&nbsp;relation_name,&nbsp;index])</td>
+<td>Write ARFF file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="generated/survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

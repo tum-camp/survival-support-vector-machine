@@ -1,0 +1,346 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.svm.FastSurvivalSVM &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.svm.MinlipSurvivalAnalysis" href="survival.svm.MinlipSurvivalAnalysis.html" />
+    <link rel="prev" title="survival.svm.FastSurvivalSVM" href="survival.svm.FastKernelSurvivalSVM.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.svm.FastKernelSurvivalSVM.html"
+                        title="previous chapter">survival.svm.FastSurvivalSVM</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.svm.MinlipSurvivalAnalysis.html"
+                        title="next chapter">survival.svm.MinlipSurvivalAnalysis</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.svm.FastSurvivalSVM.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-svm-fastsurvivalsvm">
+<h1>survival.svm.FastSurvivalSVM<a class="headerlink" href="#survival-svm-fastsurvivalsvm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="survival.svm.FastSurvivalSVM">
+<em class="property">class </em><code class="descclassname">survival.svm.</code><code class="descname">FastSurvivalSVM</code><span class="sig-paren">(</span><em>alpha=1</em>, <em>rank_ratio=1.0</em>, <em>fit_intercept=False</em>, <em>max_iter=20</em>, <em>verbose=False</em>, <em>tol=None</em>, <em>optimizer=None</em>, <em>random_state=None</em>, <em>timeit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Efficient Training of linear Survival Support Vector Machine</p>
+<p>Training data consists of <em>n</em> triplets <span class="math">\((\mathbf{x}_i, y_i, \delta_i)\)</span>,
+where <span class="math">\(\mathbf{x}_i\)</span> is a <em>d</em>-dimensional feature vector, <span class="math">\(y_i &gt; 0\)</span>
+the survival time or time of censoring, and <span class="math">\(\delta_i \in \{0,1\}\)</span>
+the binary event indicator. Using the training data, the objective is to
+minimize the following function:</p>
+<div class="math">
+\[ \begin{align}\begin{aligned} \arg \min_{\mathbf{w}, b} \frac{1}{2} \mathbf{w}^\top \mathbf{w}
+ + \frac{\alpha}{2} \left[ r \sum_{i,j \in \mathcal{P}}
+ \max(0, 1 - (\mathbf{w}^\top \mathbf{x}_i - \mathbf{w}^\top \mathbf{x}_j))^2
+ + (1 - r) \sum_{i=0}^n \left( \zeta_{\mathbf{w}, b} (y_i, x_i, \delta_i)
+ \right)^2 \right]\\\begin{split}\zeta_{\mathbf{w},b} (y_i, \mathbf{x}_i, \delta_i) =
+\begin{cases}
+\max(0, y_i - \mathbf{w}^\top \mathbf{x}_i - b) \quad \text{if $\delta_i = 0$,} \\
+y_i - \mathbf{w}^\top \mathbf{x}_i - b \quad \text{if $\delta_i = 1$,} \\
+\end{cases}\end{split}\\\mathcal{P} = \{ (i, j) \mid y_i &gt; y_j \land \delta_j = 1 \}_{i,j=1,\dots,n}\end{aligned}\end{align} \]</div>
+<p>The hyper-parameter <span class="math">\(\alpha &gt; 0\)</span> determines the amount of regularization
+to apply: a smaller value increases the amount of regularization and a
+higher value reduces the amount of regularization. The hyper-parameter
+<span class="math">\(r \in [0; 1]\)</span> determines the trade-off between the ranking objective
+and the regresson objective. If <span class="math">\(r = 1\)</span> it reduces to the ranking
+objective, and if <span class="math">\(r = 0\)</span> to the regression objective. If the regression
+objective is used, survival/censoring times are log-transform and thus cannot be
+zero or negative.</p>
+<p>See <a class="reference internal" href="survival.svm.FastKernelSurvivalSVM.html#survival.svm.FastKernelSurvivalSVM" title="survival.svm.FastKernelSurvivalSVM"><code class="xref py py-class docutils literal"><span class="pre">survival.svm.FastKernelSurvivalSVM</span></code></a> for an efficient implementation
+of kernel Survival Support Vector Machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, positive (default: 1)</p>
+<blockquote>
+<div><p>Weight of penalizing the squared hinge loss in the objective function</p>
+</div></blockquote>
+<p><strong>rank_ratio</strong> : float, optional (default=1.0)</p>
+<blockquote>
+<div><p>Mixing parameter between regression and ranking objective with <code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">rank_ratio</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>.
+If <code class="docutils literal"><span class="pre">rank_ratio</span> <span class="pre">=</span> <span class="pre">1</span></code>, only ranking is performed, if <code class="docutils literal"><span class="pre">rank_ratio</span> <span class="pre">=</span> <span class="pre">0</span></code>, only regression
+is performed. A non-zero value is only allowed if optimizer is one of &#8216;avltree&#8217;, &#8216;PRSVM&#8217;,
+or &#8216;rbtree&#8217;.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, optional (default: 20)</p>
+<blockquote>
+<div><p>Maximum number of iterations to perform in Newton optimization</p>
+</div></blockquote>
+<p><strong>verbose</strong> : bool, optional (default: False)</p>
+<blockquote>
+<div><p>Whether to print messages during optimization</p>
+</div></blockquote>
+<p><strong>tol</strong> : float, optional</p>
+<blockquote>
+<div><p>Tolerance for termination. For detailed control, use solver-specific
+options.</p>
+</div></blockquote>
+<p><strong>optimizer</strong> : &#8220;avltree&#8221; | &#8220;direct-count&#8221; | &#8220;PRSVM&#8221; | &#8220;rbtree&#8221; | &#8220;simple&#8221;, optional (default: avltree)</p>
+<blockquote>
+<div><p>Which optimizer to use.</p>
+</div></blockquote>
+<p><strong>random_state</strong> : int or <code class="xref py py-class docutils literal"><span class="pre">numpy.random.RandomState</span></code> instance, optional</p>
+<blockquote>
+<div><p>Random number generator (used to resolve ties in survival times).</p>
+</div></blockquote>
+<p><strong>timeit</strong> : False or int</p>
+<blockquote class="last">
+<div><p>If non-zero value is provided the time it takes for optimization is measured.
+The given number of repetitions are performed. Results can be accessed from the
+<code class="docutils literal"><span class="pre">optimizer_result_</span></code> attribute.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R16]</a></td><td>Pölsterl, S., Navab, N., and Katouzian, A.,
+&#8220;Fast Training of Support Vector Machines for Survival Analysis&#8221;,
+Machine Learning and Knowledge Discovery in Databases: European Conference,
+ECML PKDD 2015, Porto, Portugal,
+Lecture Notes in Computer Science, vol. 9285, pp. 243-259 (2015)</td></tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>coef_</cite>:</td>
+<td>Coefficients of the features in the decision function.</td>
+</tr>
+<tr class="row-even"><td><cite>optimizer_result_</cite>:</td>
+<td>Stats returned by the optimizer. See <code class="xref py py-class docutils literal"><span class="pre">scipy.optimize.optimize.OptimizeResult</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.FastSurvivalSVM.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1</em>, <em>rank_ratio=1.0</em>, <em>fit_intercept=False</em>, <em>max_iter=20</em>, <em>verbose=False</em>, <em>tol=None</em>, <em>optimizer=None</em>, <em>random_state=None</em>, <em>timeit=False</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.__init__" title="survival.svm.FastSurvivalSVM.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([alpha,&nbsp;rank_ratio,&nbsp;fit_intercept,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.fit" title="survival.svm.FastSurvivalSVM.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
+<td>Build a survival support vector machine model from training data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.get_params" title="survival.svm.FastSurvivalSVM.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.predict" title="survival.svm.FastSurvivalSVM.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
+<td>Rank samples according to survival times</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.FastSurvivalSVM.set_params" title="survival.svm.FastSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.FastSurvivalSVM.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a survival support vector machine model from training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Data matrix.</p>
+</div></blockquote>
+<p><strong>y</strong> : structured array, shape = [n_samples]</p>
+<blockquote>
+<div><p>A structured array containing the binary event indicator
+as first field, and time of event or time of censoring as
+second field.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.FastSurvivalSVM.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong></p>
+<blockquote>
+<div><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.FastSurvivalSVM.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rank samples according to survival times</p>
+<p>Lower ranks indicate shorter survival, higher ranks longer survival.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>The input samples.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array of shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted ranks.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.FastSurvivalSVM.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.FastSurvivalSVM.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
+component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.FastKernelSurvivalSVM.html" title="survival.svm.FastSurvivalSVM"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+survival.kernels.clinical_kernel
+================================
+
+.. currentmodule:: survival.kernels
+
+.. autofunction:: clinical_kernel

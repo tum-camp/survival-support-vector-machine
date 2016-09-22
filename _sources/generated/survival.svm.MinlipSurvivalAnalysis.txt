@@ -1,0 +1,27 @@
+survival.svm.MinlipSurvivalAnalysis
+===================================
+
+.. currentmodule:: survival.svm
+
+.. autoclass:: MinlipSurvivalAnalysis
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MinlipSurvivalAnalysis.__init__
+      ~MinlipSurvivalAnalysis.fit
+      ~MinlipSurvivalAnalysis.get_params
+      ~MinlipSurvivalAnalysis.predict
+      ~MinlipSurvivalAnalysis.score
+      ~MinlipSurvivalAnalysis.set_params
+   
+   
+
+   
+   
+   

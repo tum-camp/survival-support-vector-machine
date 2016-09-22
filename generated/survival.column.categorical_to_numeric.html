@@ -1,0 +1,145 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.column.categorical_to_numeric &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.column.encode_categorical" href="survival.column.encode_categorical.html" />
+    <link rel="prev" title="survival.metrics.concordance_index_censored" href="survival.metrics.concordance_index_censored.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.column.encode_categorical.html" title="survival.column.encode_categorical"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.metrics.concordance_index_censored.html" title="survival.metrics.concordance_index_censored"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.metrics.concordance_index_censored.html"
+                        title="previous chapter">survival.metrics.concordance_index_censored</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.column.encode_categorical.html"
+                        title="next chapter">survival.column.encode_categorical</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.column.categorical_to_numeric.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-column-categorical-to-numeric">
+<h1>survival.column.categorical_to_numeric<a class="headerlink" href="#survival-column-categorical-to-numeric" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="survival.column.categorical_to_numeric">
+<code class="descclassname">survival.column.</code><code class="descname">categorical_to_numeric</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.column.categorical_to_numeric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode categorical columns to numeric by converting each category to
+an integer value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>table</strong> : pandas.DataFrame</p>
+<blockquote>
+<div><p>Table with categorical columns to encode.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded</strong> : pandas.DataFrame</p>
+<blockquote class="last">
+<div><p>Table with categorical columns encoded as numeric.
+Numeric columns in the input table remain unchanged.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.column.encode_categorical.html" title="survival.column.encode_categorical"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.metrics.concordance_index_censored.html" title="survival.metrics.concordance_index_censored"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

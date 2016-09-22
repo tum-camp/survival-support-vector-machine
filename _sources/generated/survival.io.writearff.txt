@@ -1,0 +1,6 @@
+survival.io.writearff
+=====================
+
+.. currentmodule:: survival.io
+
+.. autofunction:: writearff

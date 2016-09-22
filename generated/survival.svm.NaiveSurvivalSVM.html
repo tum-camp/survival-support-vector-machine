@@ -1,0 +1,523 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.svm.NaiveSurvivalSVM &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.kernels.clinical_kernel" href="survival.kernels.clinical_kernel.html" />
+    <link rel="prev" title="survival.svm.HingeLossSurvivalSVM" href="survival.svm.HingeLossSurvivalSVM.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.kernels.clinical_kernel.html" title="survival.kernels.clinical_kernel"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.HingeLossSurvivalSVM.html" title="survival.svm.HingeLossSurvivalSVM"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.svm.HingeLossSurvivalSVM.html"
+                        title="previous chapter">survival.svm.HingeLossSurvivalSVM</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.kernels.clinical_kernel.html"
+                        title="next chapter">survival.kernels.clinical_kernel</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.svm.NaiveSurvivalSVM.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-svm-naivesurvivalsvm">
+<h1>survival.svm.NaiveSurvivalSVM<a class="headerlink" href="#survival-svm-naivesurvivalsvm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="survival.svm.NaiveSurvivalSVM">
+<em class="property">class </em><code class="descclassname">survival.svm.</code><code class="descname">NaiveSurvivalSVM</code><span class="sig-paren">(</span><em>penalty='l2'</em>, <em>loss='squared_hinge'</em>, <em>dual=False</em>, <em>tol=0.0001</em>, <em>alpha=1.0</em>, <em>verbose=0</em>, <em>random_state=None</em>, <em>max_iter=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Naive version of linear Survival Support Vector Machine.</p>
+<p>Uses regular linear support vector classifier (liblinear).
+A new set of samples is created by building the difference between any two feature
+vectors in the original data, thus this version requires <cite>O(n_samples^2)</cite> space.</p>
+<p>See <a class="reference internal" href="survival.svm.HingeLossSurvivalSVM.html#survival.svm.HingeLossSurvivalSVM" title="survival.svm.HingeLossSurvivalSVM"><code class="xref py py-class docutils literal"><span class="pre">survival.svm.HingeLossSurvivalSVM</span></code></a> for the kernel naive survival SVM.</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\min_{\mathbf{w}}\quad
+\frac{1}{2} \lVert \mathbf{w} \rVert_2^2
++ \gamma \sum_{i = 1}^n \xi_i \\
+\text{subject to}\quad
+\mathbf{w}^\top \mathbf{x}_i - \mathbf{w}^\top \mathbf{x}_j \geq 1 - \xi_{ij},\quad
+\forall (i, j) \in \mathcal{P}, \\
+\xi_i \geq 0,\quad \forall (i, j) \in \mathcal{P}.\end{split}\\\mathcal{P} = \{ (i, j) \mid y_i &gt; y_j \land \delta_j = 1 \}_{i,j=1,\dots,n}.\end{aligned}\end{align} \]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, positive, default=1.0</p>
+<blockquote>
+<div><p>Weight of penalizing the squared hinge loss in the objective function (default: 1)</p>
+</div></blockquote>
+<p><strong>loss</strong> : string, &#8216;hinge&#8217; or &#8216;squared_hinge&#8217; (default=&#8217;squared_hinge&#8217;)</p>
+<blockquote>
+<div><p>Specifies the loss function. &#8216;hinge&#8217; is the standard SVM loss
+(used e.g. by the SVC class) while &#8216;squared_hinge&#8217; is the
+square of the hinge loss.</p>
+</div></blockquote>
+<p><strong>penalty</strong> : string, &#8216;l1&#8217; or &#8216;l2&#8217; (default=&#8217;l2&#8217;)</p>
+<blockquote>
+<div><p>Specifies the norm used in the penalization. The &#8216;l2&#8217;
+penalty is the standard used in SVC. The &#8216;l1&#8217; leads to <cite>coef_</cite>
+vectors that are sparse.</p>
+</div></blockquote>
+<p><strong>dual</strong> : bool, (default=True)</p>
+<blockquote>
+<div><p>Select the algorithm to either solve the dual or primal
+optimization problem. Prefer dual=False when n_samples &gt; n_features.</p>
+</div></blockquote>
+<p><strong>tol</strong> : float, optional (default=1e-4)</p>
+<blockquote>
+<div><p>Tolerance for stopping criteria.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int, (default=0)</p>
+<blockquote>
+<div><p>Enable verbose output. Note that this setting takes advantage of a
+per-process runtime setting in liblinear that, if enabled, may not work
+properly in a multithreaded context.</p>
+</div></blockquote>
+<p><strong>random_state</strong> : int seed, RandomState instance, or None (default=None)</p>
+<blockquote>
+<div><p>The seed of the pseudo random number generator to use when
+shuffling the data.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, (default=1000)</p>
+<blockquote class="last">
+<div><p>The maximum number of iterations to be run.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r21" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R21]</a></td><td>Van Belle, V., Pelckmans, K., Suykens, J. A., &amp; Van Huffel, S.
+Support Vector Machines for Survival Analysis. In Proc. of the 3rd Int. Conf.
+on Computational Intelligence in Medicine and Healthcare (CIMED). 1-8. 2007</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r22" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R22]</a></td><td>Evers, L., Messow, C.M.,
+&#8220;Sparse kernel methods for high-dimensional survival data&#8221;,
+Bioinformatics 24(14), 1632-8, 2008.</td></tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>penalty='l2'</em>, <em>loss='squared_hinge'</em>, <em>dual=False</em>, <em>tol=0.0001</em>, <em>alpha=1.0</em>, <em>verbose=0</em>, <em>random_state=None</em>, <em>max_iter=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.__init__" title="survival.svm.NaiveSurvivalSVM.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;tol,&nbsp;alpha,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.decision_function" title="survival.svm.NaiveSurvivalSVM.decision_function"><code class="xref py py-obj docutils literal"><span class="pre">decision_function</span></code></a>(X)</td>
+<td>Predict confidence scores for samples.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.densify" title="survival.svm.NaiveSurvivalSVM.densify"><code class="xref py py-obj docutils literal"><span class="pre">densify</span></code></a>()</td>
+<td>Convert coefficient matrix to dense array format.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.fit" title="survival.svm.NaiveSurvivalSVM.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
+<td>Build a survival support vector machine model from training data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.fit_transform" title="survival.svm.NaiveSurvivalSVM.fit_transform"><code class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></code></a>(X[,&nbsp;y])</td>
+<td>Fit to data, then transform it.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.get_params" title="survival.svm.NaiveSurvivalSVM.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.predict" title="survival.svm.NaiveSurvivalSVM.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
+<td>Rank samples according to survival times</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.score" title="survival.svm.NaiveSurvivalSVM.score"><code class="xref py py-obj docutils literal"><span class="pre">score</span></code></a>(X,&nbsp;y[,&nbsp;sample_weight])</td>
+<td>Returns the mean accuracy on the given test data and labels.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.set_params" title="survival.svm.NaiveSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.sparsify" title="survival.svm.NaiveSurvivalSVM.sparsify"><code class="xref py py-obj docutils literal"><span class="pre">sparsify</span></code></a>()</td>
+<td>Convert coefficient matrix to sparse format.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.NaiveSurvivalSVM.transform" title="survival.svm.NaiveSurvivalSVM.transform"><code class="xref py py-obj docutils literal"><span class="pre">transform</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Support to use estimators as feature selectors will be removed in version 0.19.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.decision_function">
+<code class="descname">decision_function</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict confidence scores for samples.</p>
+<p>The confidence score for a sample is the signed distance of that
+sample to the hyperplane.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = (n_samples, n_features)</p>
+<blockquote>
+<div><p>Samples.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array, shape=(n_samples,) if n_classes == 2 else (n_samples, n_classes)</p>
+<blockquote class="last">
+<div><p>Confidence scores per (sample, class) combination. In the binary
+case, confidence score for self.classes_[1] where &gt;0 means this
+class would be predicted.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.densify">
+<code class="descname">densify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.densify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to dense array format.</p>
+<p>Converts the <code class="docutils literal"><span class="pre">coef_</span></code> member (back) to a numpy.ndarray. This is the
+default format of <code class="docutils literal"><span class="pre">coef_</span></code> and is required for fitting, so calling
+this method is only required on models that have previously been
+sparsified; otherwise, it is a no-op.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self: estimator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a survival support vector machine model from training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Data matrix.</p>
+</div></blockquote>
+<p><strong>y</strong> : structured array, shape = [n_samples]</p>
+<blockquote>
+<div><p>A structured array containing the binary event indicator
+as first field, and time of event or time of censoring as
+second field.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to X and y with optional parameters fit_params
+and returns a transformed version of X.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : numpy array of shape [n_samples]</p>
+<blockquote>
+<div><p>Target values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_new</strong> : numpy array of shape [n_samples, n_features_new]</p>
+<blockquote class="last">
+<div><p>Transformed array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong></p>
+<blockquote>
+<div><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rank samples according to survival times</p>
+<p>Lower ranks indicate shorter survival, higher ranks longer survival.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>The input samples.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array of shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted ranks.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.score">
+<code class="descname">score</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>sample_weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean accuracy on the given test data and labels.</p>
+<p>In multi-label classification, this is the subset accuracy
+which is a harsh metric since you require for each sample that
+each label set be correctly predicted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = (n_samples, n_features)</p>
+<blockquote>
+<div><p>Test samples.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = (n_samples) or (n_samples, n_outputs)</p>
+<blockquote>
+<div><p>True labels for X.</p>
+</div></blockquote>
+<p><strong>sample_weight</strong> : array-like, shape = [n_samples], optional</p>
+<blockquote>
+<div><p>Sample weights.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>score</strong> : float</p>
+<blockquote class="last">
+<div><p>Mean accuracy of self.predict(X) wrt. y.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
+component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.sparsify">
+<code class="descname">sparsify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.sparsify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert coefficient matrix to sparse format.</p>
+<p>Converts the <code class="docutils literal"><span class="pre">coef_</span></code> member to a scipy.sparse matrix, which for
+L1-regularized models can be much more memory- and storage-efficient
+than the usual numpy.ndarray representation.</p>
+<p>The <code class="docutils literal"><span class="pre">intercept_</span></code> member is not converted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self: estimator</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For non-sparse models, i.e. when there are not many zeros in <code class="docutils literal"><span class="pre">coef_</span></code>,
+this may actually <em>increase</em> memory usage, so use this method with
+care. A rule of thumb is that the number of zero elements, which can
+be computed with <code class="docutils literal"><span class="pre">(coef_</span> <span class="pre">==</span> <span class="pre">0).sum()</span></code>, must be more than 50% for this
+to provide significant benefits.</p>
+<p>After calling this method, further fitting with the partial_fit
+method (if any) will not work until you call densify.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.NaiveSurvivalSVM.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.NaiveSurvivalSVM.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Support to use estimators as feature selectors will be removed in version 0.19. Use SelectFromModel instead.</p>
+<p>Reduce X to its most important features.</p>
+<blockquote>
+<div>Uses <code class="docutils literal"><span class="pre">coef_</span></code> or <code class="docutils literal"><span class="pre">feature_importances_</span></code> to determine the most
+important features.  For models with a <code class="docutils literal"><span class="pre">coef_</span></code> for each class, the
+absolute sum over the classes is used.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array or scipy sparse matrix of shape [n_samples, n_features]</p>
+<blockquote>
+<div><blockquote>
+<div><p>The input samples.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>threshold</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string, float or None, optional (default=None)</span><dd><p class="first last">The threshold value to use for feature selection. Features whose
+importance is greater or equal are kept while the others are
+discarded. If &#8220;median&#8221; (resp. &#8220;mean&#8221;), then the threshold value is
+the median (resp. the mean) of the feature importances. A scaling
+factor (e.g., &#8220;1.25*mean&#8221;) may also be used. If None and if
+available, the object attribute <code class="docutils literal"><span class="pre">threshold</span></code> is used. Otherwise,
+&#8220;mean&#8221; is used by default.</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_r</strong> : array of shape [n_samples, n_selected_features]</p>
+<blockquote class="last">
+<div><p>The input samples with only the selected features.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.kernels.clinical_kernel.html" title="survival.kernels.clinical_kernel"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.HingeLossSurvivalSVM.html" title="survival.svm.HingeLossSurvivalSVM"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

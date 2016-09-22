@@ -1,0 +1,190 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.metrics.concordance_index_censored &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.column.categorical_to_numeric" href="survival.column.categorical_to_numeric.html" />
+    <link rel="prev" title="survival.kernels.ClinicalKernelTransform" href="survival.kernels.ClinicalKernelTransform.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.column.categorical_to_numeric.html" title="survival.column.categorical_to_numeric"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.kernels.ClinicalKernelTransform.html" title="survival.kernels.ClinicalKernelTransform"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.kernels.ClinicalKernelTransform.html"
+                        title="previous chapter">survival.kernels.ClinicalKernelTransform</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.column.categorical_to_numeric.html"
+                        title="next chapter">survival.column.categorical_to_numeric</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.metrics.concordance_index_censored.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-metrics-concordance-index-censored">
+<h1>survival.metrics.concordance_index_censored<a class="headerlink" href="#survival-metrics-concordance-index-censored" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="survival.metrics.concordance_index_censored">
+<code class="descclassname">survival.metrics.</code><code class="descname">concordance_index_censored</code><span class="sig-paren">(</span><em>event_indicator</em>, <em>event_time</em>, <em>estimate</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.metrics.concordance_index_censored" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concordance index for right-censored data</p>
+<p>The concordance index is defined as the proportion of all comparable pairs
+in which the predictions and outcomes are concordant.</p>
+<p>Samples are comparable if for at least one of them an event occurred.
+If the estimated risk is larger for the sample with a higher time of
+event/censoring, the predictions of that pair are said to be concordant.
+If an event occurred for one sample and the other is known to be
+event-free at least until the time of event of the first, the second
+sample is assumed to <em>outlive</em> the first.
+When predicted risks are identical for a pair, 0.5 rather than 1 is added
+to the count of concordant pairs.
+A pair is not comparable if an event occurred for both of them at the same
+time or an event occurred for one of them but the time of censoring is
+smaller than the time of event of the first one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event_indicator</strong> : array-like, shape = [n_samples,]</p>
+<blockquote>
+<div><p>Boolean array denotes whether an event occurred</p>
+</div></blockquote>
+<p><strong>event_time</strong> : array-like, shape = [n_samples,]</p>
+<blockquote>
+<div><p>Array containing the time of an event or time of censoring</p>
+</div></blockquote>
+<p><strong>estimate</strong> : array-like, shape = [n_samples,]</p>
+<blockquote>
+<div><p>Estimated risk of experiencing an event</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cindex</strong> : float</p>
+<blockquote>
+<div><p>Concordance index</p>
+</div></blockquote>
+<p><strong>concordant</strong> : int</p>
+<blockquote>
+<div><p>Number of concordant pairs</p>
+</div></blockquote>
+<p><strong>discordant</strong> : int</p>
+<blockquote>
+<div><p>Number of discordant pairs</p>
+</div></blockquote>
+<p><strong>tied_risk</strong> : int</p>
+<blockquote>
+<div><p>Number of pairs having tied estimated risks</p>
+</div></blockquote>
+<p><strong>tied_time</strong> : int</p>
+<blockquote class="last">
+<div><p>Number of pairs having an event at the same time</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R14]</a></td><td>Harrell, F.E., Califf, R.M., Pryor, D.B., Lee, K.L., Rosati, R.A,
+&#8220;Multivariable prognostic models: issues in developing models,
+evaluating assumptions and adequacy, and measuring and reducing errors&#8221;,
+Statistics in Medicine, 15(4), 361-87, 1996.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.column.categorical_to_numeric.html" title="survival.column.categorical_to_numeric"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.kernels.ClinicalKernelTransform.html" title="survival.kernels.ClinicalKernelTransform"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

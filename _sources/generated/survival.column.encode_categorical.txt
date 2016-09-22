@@ -1,0 +1,6 @@
+survival.column.encode_categorical
+==================================
+
+.. currentmodule:: survival.column
+
+.. autofunction:: encode_categorical

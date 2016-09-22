@@ -1,0 +1,27 @@
+survival.svm.HingeLossSurvivalSVM
+=================================
+
+.. currentmodule:: survival.svm
+
+.. autoclass:: HingeLossSurvivalSVM
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~HingeLossSurvivalSVM.__init__
+      ~HingeLossSurvivalSVM.fit
+      ~HingeLossSurvivalSVM.get_params
+      ~HingeLossSurvivalSVM.predict
+      ~HingeLossSurvivalSVM.score
+      ~HingeLossSurvivalSVM.set_params
+   
+   
+
+   
+   
+   

@@ -1,0 +1,363 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.svm.HingeLossSurvivalSVM &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.svm.NaiveSurvivalSVM" href="survival.svm.NaiveSurvivalSVM.html" />
+    <link rel="prev" title="survival.svm.MinlipSurvivalAnalysis" href="survival.svm.MinlipSurvivalAnalysis.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.svm.NaiveSurvivalSVM.html" title="survival.svm.NaiveSurvivalSVM"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.svm.MinlipSurvivalAnalysis.html"
+                        title="previous chapter">survival.svm.MinlipSurvivalAnalysis</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.svm.NaiveSurvivalSVM.html"
+                        title="next chapter">survival.svm.NaiveSurvivalSVM</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.svm.HingeLossSurvivalSVM.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-svm-hingelosssurvivalsvm">
+<h1>survival.svm.HingeLossSurvivalSVM<a class="headerlink" href="#survival-svm-hingelosssurvivalsvm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="survival.svm.HingeLossSurvivalSVM">
+<em class="property">class </em><code class="descclassname">survival.svm.</code><code class="descname">HingeLossSurvivalSVM</code><span class="sig-paren">(</span><em>solver='cvxpy'</em>, <em>alpha=1.0</em>, <em>kernel='linear'</em>, <em>gamma=None</em>, <em>degree=3</em>, <em>coef0=1</em>, <em>kernel_params=None</em>, <em>pairs='all'</em>, <em>verbose=False</em>, <em>timeit=None</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Naive implementation of kernel survival support vector machine.</p>
+<p>A new set of samples is created by building the difference between any two feature
+vectors in the original data, thus this version requires <span class="math">\(O(\text{n_samples}^4)\)</span> space and
+<span class="math">\(O(\text{n_samples}^6 \cdot \text{n_features})\)</span>.</p>
+<p>See <a class="reference internal" href="survival.svm.NaiveSurvivalSVM.html#survival.svm.NaiveSurvivalSVM" title="survival.svm.NaiveSurvivalSVM"><code class="xref py py-class docutils literal"><span class="pre">survival.svm.NaiveSurvivalSVM</span></code></a> for the linear naive survival SVM based on liblinear.</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\min_{\mathbf{w}}\quad
+\frac{1}{2} \lVert \mathbf{w} \rVert_2^2
++ \gamma \sum_{i = 1}^n \xi_i \\
+\text{subject to}\quad
+\mathbf{w}^\top \phi(\mathbf{x})_i - \mathbf{w}^\top \phi(\mathbf{x})_j \geq 1 - \xi_{ij},\quad
+\forall (i, j) \in \mathcal{P}, \\
+\xi_i \geq 0,\quad \forall (i, j) \in \mathcal{P}.\end{split}\\\mathcal{P} = \{ (i, j) \mid y_i &gt; y_j \land \delta_j = 1 \}_{i,j=1,\dots,n}.\end{aligned}\end{align} \]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>solver</strong> : &#8220;cvxpy&#8221; | &#8220;cvxopt&#8221;, optional (default: cvxpy)</p>
+<blockquote>
+<div><p>Which quadratic program solver to use.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : float, positive</p>
+<blockquote>
+<div><p>Weight of penalizing the hinge loss in the objective function (default: 1)</p>
+</div></blockquote>
+<p><strong>kernel</strong> : &#8220;linear&#8221; | &#8220;poly&#8221; | &#8220;rbf&#8221; | &#8220;sigmoid&#8221; | &#8220;cosine&#8221; | &#8220;precomputed&#8221;</p>
+<blockquote>
+<div><p>Kernel.
+Default: &#8220;linear&#8221;</p>
+</div></blockquote>
+<p><strong>gamma</strong> : float, optional</p>
+<blockquote>
+<div><p>Kernel coefficient for rbf and poly kernels. Default: <code class="docutils literal"><span class="pre">1/n_features</span></code>.
+Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>degree</strong> : int (default=3)</p>
+<blockquote>
+<div><p>Degree for poly kernels. Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>coef0</strong> : float, optional</p>
+<blockquote>
+<div><p>Independent term in poly and sigmoid kernels.
+Ignored by other kernels.</p>
+</div></blockquote>
+<p><strong>kernel_params</strong> : mapping of string to any, optional</p>
+<blockquote>
+<div><p>Parameters (keyword arguments) and values for kernel passed as call</p>
+</div></blockquote>
+<p><strong>pairs</strong> : &#8220;all&#8221; | &#8220;nearest&#8221; | &#8220;next&#8221;, optional (default: &#8220;all&#8221;)</p>
+<blockquote>
+<div><p>Which constraints to use in the optimization problem.</p>
+<ul class="simple">
+<li>all: Use all comparable pairs. Scales quadratic in number of samples.</li>
+<li>nearest: Only considers comparable pairs <span class="math">\((i, j)\)</span> where <span class="math">\(j\)</span> is the
+uncensored sample with highest survival time smaller than <span class="math">\(y_i\)</span>.
+Scales linear in number of samples (cf. <code class="xref py py-class docutils literal"><span class="pre">survival.svm.MinlipSurvivalSVM</span></code>).</li>
+<li>next: Only compare against direct nearest neighbor according to observed time,
+disregarding its censoring status. Scales linear in number of samples.</li>
+</ul>
+</div></blockquote>
+<p><strong>timeit</strong> : False or int</p>
+<blockquote class="last">
+<div><p>If non-zero value is provided the time it takes for optimization is measured.
+The given number of repetitions are performed. Results can be accessed from the
+<code class="docutils literal"><span class="pre">timings_</span></code> attribute.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R17]</a></td><td>Van Belle, V., Pelckmans, K., Suykens, J. A., &amp; Van Huffel, S.
+Support Vector Machines for Survival Analysis. In Proc. of the 3rd Int. Conf.
+on Computational Intelligence in Medicine and Healthcare (CIMED). 1-8. 2007</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R18]</a></td><td>Evers, L., Messow, C.M.,
+&#8220;Sparse kernel methods for high-dimensional survival data&#8221;,
+Bioinformatics 24(14), 1632-8, 2008.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r19" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R19]</a></td><td>Van Belle, V., Pelckmans, K., Suykens, J.A., Van Huffel, S.,
+&#8220;Survival SVM: a practical scalable algorithm&#8221;,
+In: Proc. of 16th European Symposium on Artificial Neural Networks,
+89-94, 2008.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>X_fit_</cite> :</td>
+<td>Training data.</td>
+</tr>
+<tr class="row-even"><td><cite>coef_</cite> :</td>
+<td>Coefficients of the features in the decision function.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.HingeLossSurvivalSVM.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>solver='cvxpy'</em>, <em>alpha=1.0</em>, <em>kernel='linear'</em>, <em>gamma=None</em>, <em>degree=3</em>, <em>coef0=1</em>, <em>kernel_params=None</em>, <em>pairs='all'</em>, <em>verbose=False</em>, <em>timeit=None</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.HingeLossSurvivalSVM.__init__" title="survival.svm.HingeLossSurvivalSVM.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([solver,&nbsp;alpha,&nbsp;kernel,&nbsp;gamma,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.HingeLossSurvivalSVM.fit" title="survival.svm.HingeLossSurvivalSVM.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(X,&nbsp;y)</td>
+<td>Build a MINLIP survival model from training data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.svm.HingeLossSurvivalSVM.get_params" title="survival.svm.HingeLossSurvivalSVM.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.HingeLossSurvivalSVM.predict" title="survival.svm.HingeLossSurvivalSVM.predict"><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></a>(X)</td>
+<td>Predict risk score of experiencing an event.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">score</span></code>(X,&nbsp;y)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.svm.HingeLossSurvivalSVM.set_params" title="survival.svm.HingeLossSurvivalSVM.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.svm.HingeLossSurvivalSVM.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a MINLIP survival model from training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Data matrix.</p>
+</div></blockquote>
+<p><strong>y</strong> : structured array, shape = [n_samples]</p>
+<blockquote>
+<div><p>A structured array containing the binary event indicator
+as first field, and time of event or time of censoring as
+second field.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.HingeLossSurvivalSVM.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong></p>
+<blockquote>
+<div><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.HingeLossSurvivalSVM.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict risk score of experiencing an event.</p>
+<p>Higher scores indicate shorter survival (high risk),
+lower scores longer survival (low risk).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>The input samples.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array of shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted risk.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.svm.HingeLossSurvivalSVM.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.svm.HingeLossSurvivalSVM.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
+component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.svm.NaiveSurvivalSVM.html" title="survival.svm.NaiveSurvivalSVM"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.svm.MinlipSurvivalAnalysis.html" title="survival.svm.MinlipSurvivalAnalysis"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

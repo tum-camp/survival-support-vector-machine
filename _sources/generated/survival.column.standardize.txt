@@ -1,0 +1,6 @@
+survival.column.standardize
+===========================
+
+.. currentmodule:: survival.column
+
+.. autofunction:: standardize

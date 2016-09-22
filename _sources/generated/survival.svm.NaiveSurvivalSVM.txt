@@ -1,0 +1,32 @@
+survival.svm.NaiveSurvivalSVM
+=============================
+
+.. currentmodule:: survival.svm
+
+.. autoclass:: NaiveSurvivalSVM
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~NaiveSurvivalSVM.__init__
+      ~NaiveSurvivalSVM.decision_function
+      ~NaiveSurvivalSVM.densify
+      ~NaiveSurvivalSVM.fit
+      ~NaiveSurvivalSVM.fit_transform
+      ~NaiveSurvivalSVM.get_params
+      ~NaiveSurvivalSVM.predict
+      ~NaiveSurvivalSVM.score
+      ~NaiveSurvivalSVM.set_params
+      ~NaiveSurvivalSVM.sparsify
+      ~NaiveSurvivalSVM.transform
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+survival.metrics.concordance_index_censored
+===========================================
+
+.. currentmodule:: survival.metrics
+
+.. autofunction:: concordance_index_censored

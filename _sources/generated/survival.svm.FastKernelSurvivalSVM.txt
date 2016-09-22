@@ -1,0 +1,26 @@
+survival.svm.FastSurvivalSVM
+============================
+
+.. currentmodule:: survival.svm
+
+.. autoclass:: FastKernelSurvivalSVM
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FastSurvivalSVM.__init__
+      ~FastSurvivalSVM.fit
+      ~FastSurvivalSVM.get_params
+      ~FastSurvivalSVM.predict
+      ~FastSurvivalSVM.set_params
+   
+   
+
+   
+   
+   

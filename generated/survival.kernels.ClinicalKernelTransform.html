@@ -1,0 +1,305 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>survival.kernels.ClinicalKernelTransform &#8212; Survival Support Vector Machine 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="Survival Support Vector Machine 2.0 documentation" href="../index.html" />
+    <link rel="up" title="API reference" href="../api.html" />
+    <link rel="next" title="survival.metrics.concordance_index_censored" href="survival.metrics.concordance_index_censored.html" />
+    <link rel="prev" title="survival.kernels.clinical_kernel" href="survival.kernels.clinical_kernel.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="survival.metrics.concordance_index_censored.html" title="survival.metrics.concordance_index_censored"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="survival.kernels.clinical_kernel.html" title="survival.kernels.clinical_kernel"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" accesskey="U">API reference</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="survival.kernels.clinical_kernel.html"
+                        title="previous chapter">survival.kernels.clinical_kernel</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="survival.metrics.concordance_index_censored.html"
+                        title="next chapter">survival.metrics.concordance_index_censored</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generated/survival.kernels.ClinicalKernelTransform.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="survival-kernels-clinicalkerneltransform">
+<h1>survival.kernels.ClinicalKernelTransform<a class="headerlink" href="#survival-kernels-clinicalkerneltransform" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="survival.kernels.ClinicalKernelTransform">
+<em class="property">class </em><code class="descclassname">survival.kernels.</code><code class="descname">ClinicalKernelTransform</code><span class="sig-paren">(</span><em>fit_once=False</em>, <em>_numeric_ranges=None</em>, <em>_numeric_columns=None</em>, <em>_nominal_columns=None</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform data using a clinical Kernel</p>
+<p>The clinical kernel distinguishes between continuous
+ordinal,and nominal variables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fit_once</strong> : bool, optional</p>
+<blockquote class="last">
+<div><p>If set to <code class="docutils literal"><span class="pre">True</span></code>, fit() does only transform the training data, but not update
+its internal state. You should call prepare() once before calling transform().
+If set to <code class="docutils literal"><span class="pre">False</span></code>, it behaves like a regular estimator, i.e., you need to
+call fit() before transform().</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R12]</a></td><td>Daemen, A., De Moor, B.,
+&#8220;Development of a kernel function for clinical data&#8221;.
+Annual International Conference of the IEEE Engineering in Medicine and Biology Society, 5913-7, 2009</td></tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>fit_once=False</em>, <em>_numeric_ranges=None</em>, <em>_numeric_columns=None</em>, <em>_nominal_columns=None</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.__init__" title="survival.kernels.ClinicalKernelTransform.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([fit_once,&nbsp;_numeric_ranges,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code>(X[,&nbsp;y])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.fit_transform" title="survival.kernels.ClinicalKernelTransform.fit_transform"><code class="xref py py-obj docutils literal"><span class="pre">fit_transform</span></code></a>(X[,&nbsp;y])</td>
+<td>Fit to data, then transform it.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.get_params" title="survival.kernels.ClinicalKernelTransform.get_params"><code class="xref py py-obj docutils literal"><span class="pre">get_params</span></code></a>([deep])</td>
+<td>Get parameters for this estimator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.pairwise_kernel" title="survival.kernels.ClinicalKernelTransform.pairwise_kernel"><code class="xref py py-obj docutils literal"><span class="pre">pairwise_kernel</span></code></a>(X,&nbsp;Y)</td>
+<td>Function to use with <code class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.pairwise.pairwise_kernels()</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">prepare</span></code>(X)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.set_params" title="survival.kernels.ClinicalKernelTransform.set_params"><code class="xref py py-obj docutils literal"><span class="pre">set_params</span></code></a>(**params)</td>
+<td>Set the parameters of this estimator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#survival.kernels.ClinicalKernelTransform.transform" title="survival.kernels.ClinicalKernelTransform.transform"><code class="xref py py-obj docutils literal"><span class="pre">transform</span></code></a>(Y)</td>
+<td>Compute all pairwise distances between <cite>self.X_fit_</cite> and <cite>Y</cite>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to X and y with optional parameters fit_params
+and returns a transformed version of X.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : numpy array of shape [n_samples]</p>
+<blockquote>
+<div><p>Target values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_new</strong> : numpy array of shape [n_samples, n_features_new]</p>
+<blockquote class="last">
+<div><p>Transformed array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deep: boolean, optional</strong></p>
+<blockquote>
+<div><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
+<blockquote class="last">
+<div><p>Parameter names mapped to their values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.pairwise_kernel">
+<code class="descname">pairwise_kernel</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.pairwise_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to use with <code class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.pairwise.pairwise_kernels()</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array, shape = [n_features]</p>
+<p><strong>Y</strong> : array, shape = [n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>similarity</strong> : float</p>
+<blockquote class="last">
+<div><p>Similarities are normalized to be within [0, 1]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it&#8217;s possible to update each
+component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="survival.kernels.ClinicalKernelTransform.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#survival.kernels.ClinicalKernelTransform.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all pairwise distances between <cite>self.X_fit_</cite> and <cite>Y</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>y</strong> : array-like, shape = [n_samples_y, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>kernel</strong> : array, shape = [n_samples_y, n_samples_X_fit_]</p>
+<blockquote class="last">
+<div><p>Kernel matrix. Values are normalized to lie within [0, 1].</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="survival.metrics.concordance_index_censored.html" title="survival.metrics.concordance_index_censored"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="survival.kernels.clinical_kernel.html" title="survival.kernels.clinical_kernel"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Survival Support Vector Machine 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >API reference</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015-2016, Sebastian Pölsterl.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

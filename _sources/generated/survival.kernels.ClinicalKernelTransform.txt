@@ -1,0 +1,29 @@
+survival.kernels.ClinicalKernelTransform
+========================================
+
+.. currentmodule:: survival.kernels
+
+.. autoclass:: ClinicalKernelTransform
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ClinicalKernelTransform.__init__
+      ~ClinicalKernelTransform.fit
+      ~ClinicalKernelTransform.fit_transform
+      ~ClinicalKernelTransform.get_params
+      ~ClinicalKernelTransform.pairwise_kernel
+      ~ClinicalKernelTransform.prepare
+      ~ClinicalKernelTransform.set_params
+      ~ClinicalKernelTransform.transform
+   
+   
+
+   
+   
+   

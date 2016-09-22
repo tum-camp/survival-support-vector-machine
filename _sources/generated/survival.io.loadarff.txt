@@ -1,0 +1,6 @@
+survival.io.loadarff
+====================
+
+.. currentmodule:: survival.io
+
+.. autofunction:: loadarff
