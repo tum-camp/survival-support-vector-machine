@@ -19,6 +19,7 @@ Vector Machines* as proposed in
 > 4th Workshop on Machine Learning in Life Sciences,
 > 23 September 2016, Riva del Garda, Italy
 
+## :bangbang: This repository is not actively maintained, please use [sebp/scikit-survival](https://github.com/sebp/scikit-survival) instead :bangbang:
 
 ## Requirements
 
